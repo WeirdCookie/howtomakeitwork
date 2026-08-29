@@ -1,0 +1,14 @@
+# Build-Artefakte
+target/
+build/
+*.o
+*.exe
+*.out
+nimcache/
+zig-out/
+.dub/
+__pycache__/
+*.pyc
+node_modules/
+.vendor/
+.bundle/
