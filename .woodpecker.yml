@@ -21,21 +21,13 @@ steps:
         sudo mkdir -p "$DEPLOY/tools" "$DEPLOY/run" "$DEPLOY/logs"
         sudo rsync -a --delete tools/ "$DEPLOY/tools/"
 
-        echo "== 3. Geaenderte Tools bauen =="
-        if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -q "tools/"; then
-          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null)
-        else
-          CHANGED="tools/"
-        fi
-
+        echo "== 3. Alle Tools bauen =="
         for lang in python rust nim go cpp ruby julia r d zig c; do
           for dir in tools/$lang/*/; do
             [ -d "$dir" ] || continue
             tool=$(basename "$dir")
-            if echo "$CHANGED" | grep -q "tools/$lang/$tool/"; then
-              echo ">> Deploy $tool ($lang)"
-              sudo /usr/local/bin/run-tool "$tool" "$lang" || echo ">> FEHLER bei $tool"
-            fi
+            echo ">> Deploy $tool ($lang)"
+            sudo /usr/local/bin/run-tool "$tool" "$lang" || echo ">> FEHLER bei $tool"
           done
         done
 
