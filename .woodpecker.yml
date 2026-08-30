@@ -6,7 +6,7 @@ when:
   branch: [main]
   event: [push]
 
-pipeline:
+steps:
   deploy:
     commands:
       - |
