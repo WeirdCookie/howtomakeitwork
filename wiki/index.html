@@ -3,98 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polyglot Tools</title>
+    <title>Tools</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; background: #0d1117; color: #e6edf3; padding: 2rem; max-width: 1000px; margin: 0 auto; }
-        h1 { color: #58a6ff; margin-bottom: 0.5rem; }
-        .subtitle { color: #8b949e; margin-bottom: 2rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
-        .card:hover { border-color: #58a6ff; }
-        .card h2 { color: #58a6ff; margin-bottom: 0.25rem; font-size: 1.1rem; }
-        .card .lang { color: #8b949e; font-size: 0.8rem; margin-bottom: 1rem; }
-        .card p { color: #8b949e; font-size: 0.9rem; line-height: 1.5; }
-        .endpoint { background: #21262d; padding: 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; color: #a5d6ff; }
-        .status { display: inline-block; width: 8px; height: 8px; background: #3fb950; border-radius: 50%; margin-right: 0.5rem; }
-        footer { margin-top: 3rem; color: #484f58; font-size: 0.8rem; text-align: center; }
+        body { font-family: system-ui, sans-serif; background: #f5f0e8; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 2rem; }
+        .card { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+        .card h2 { color: #555; margin-bottom: 0.5rem; }
+        .card a { color: #d97b00; text-decoration: none; }
+        .card a:hover { text-decoration: underline; }
+        code { background: #eee; padding: 2px 6px; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <h1>Polyglot Mini-Tools</h1>
-    <p class="subtitle">Alle Tools laufen auf dem Server in verschiedenen Sprachen. Einfach Code pushen → läuft.</p>
-    
-    <div class="grid">
-        <div class="card">
-            <h2><span class="status"></span>Rust</h2>
-            <div class="lang">actix-web</div>
-            <p>High-Performance Webservices</p>
-            <div class="endpoint">GET /api/rust/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Python</h2>
-            <div class="lang">Flask + Gunicorn</div>
-            <p>Schnelle Prototypen & Data Science</p>
-            <div class="endpoint">GET /api/python/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Nim</h2>
-            <div class="lang">Native Performance</div>
-            <p>Python-ähnliche Syntax, C-Speed</p>
-            <div class="endpoint">GET /api/nim/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Go</h2>
-            <div class="lang">Standard Library</div>
-            <p>Einfache Concurrency</p>
-            <div class="endpoint">GET /api/go/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>C++</h2>
-            <div class="lang">Raw Sockets + nlohmann/json</div>
-            <p>Maximale Kontrolle</p>
-            <div class="endpoint">GET /api/cpp/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Ruby</h2>
-            <div class="lang">WEBrick</div>
-            <p>Developer Happiness</p>
-            <div class="endpoint">GET /api/ruby/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Julia</h2>
-            <div class="lang">HTTP.jl</div>
-            <p>Scientific Computing</p>
-            <div class="endpoint">GET /api/julia/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>R</h2>
-            <div class="lang">plumber</div>
-            <p>Statistical Analysis</p>
-            <div class="endpoint">GET /api/r/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>D</h2>
-            <div class="lang">vibe-d</div>
-            <p>C-ähnlich, modern</p>
-            <div class="endpoint">GET /api/d/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>Zig</h2>
-            <div class="lang">Standard Library</div>
-            <p>Memory Safety ohne GC</p>
-            <div class="endpoint">GET /api/zig/health</div>
-        </div>
-        <div class="card">
-            <h2><span class="status"></span>C</h2>
-            <div class="lang">Raw Sockets + cJSON</div>
-            <p>Minimal Overhead</p>
-            <div class="endpoint">GET /api/c/health</div>
-        </div>
+    <h1>howtomakeit - Tools</h1>
+
+    <div class="card">
+        <h2>Rust Rechner</h2>
+        <p>Einfacher Addierer in Rust.</p>
+        <p>Demo: <a href="/api/rust/rechner/add?a=7&b=5">/api/rust/rechner/add?a=7&amp;b=5</a></p>
+        <p><code>curl https://howtomakeit.work/api/rust/rechner/add?a=7&b=5</code></p>
     </div>
-    
-    <footer>
-        CI/CD: Woodpecker | Reverse Proxy: Caddy | Server: openSUSE Leap
-    </footer>
 </body>
 </html>

@@ -11,13 +11,12 @@ pipeline:
     commands:
       - |
         set -e
-        echo "== 1. Website nach /var/www/wiki =="
+        echo "== 1. Statische Website nach /var/www/wiki =="
         sudo mkdir -p /var/www/wiki
-        sudo chcon -R -t httpd_sys_content_t /var/www/wiki 2>/dev/null || true
-        # Root-Webdateien (index.htm, style.css, Bilder, ...)
-        sudo rsync -a index.htm index.html style.css *.jpg *.jpeg *.png *.svg 2>/dev/null /var/www/wiki/ || true
-        # wiki/-Ordner (Inhalt wird über Root-Dateien gelegt)
-        sudo rsync -a --delete wiki/ /var/www/wiki/
+        # Root-Webdateien (deine HTML/CSS/Bilder im Repo-Root)
+        sudo rsync -a --ignore-missing-errors index.htm index.html style.css *.jpg *.jpeg *.png *.gif *.svg 2>/dev/null /var/www/wiki/ || true
+        # Inhalt des wiki/-Ordners (überschreibt, löscht aber nichts)
+        sudo rsync -a wiki/ /var/www/wiki/ 2>/dev/null || true
         sudo chcon -R -t httpd_sys_content_t /var/www/wiki 2>/dev/null || true
 
         echo "== 2. Tools nach ~/repo/tools =="

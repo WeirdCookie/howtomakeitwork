@@ -12,3 +12,5 @@ __pycache__/
 node_modules/
 .vendor/
 .bundle/
+#privater stuff
+how-i-made-this-server.md

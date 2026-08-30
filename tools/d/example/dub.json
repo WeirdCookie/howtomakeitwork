@@ -1,7 +1,0 @@
-{
-  "name": "example",
-  "targetType": "executable",
-  "dependencies": {
-    "vibe-d": "~>0.10.0"
-  }
-}
