@@ -8,7 +8,7 @@ when:
 
 steps:
   deploy:
-    image: alpine
+    image: bash
     commands:
       - |
         set -e
