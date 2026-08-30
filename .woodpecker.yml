@@ -1,6 +1,4 @@
 # .woodpecker.yml
-# Läuft auf dem Server direkt (Woodpecker local backend).
-# Bei jedem Push: synct Website + Tools, baut & startet geänderte Tools.
 
 when:
   branch: [main]
@@ -14,17 +12,16 @@ steps:
         set -e
         echo "== 1. Statische Website nach /var/www/wiki =="
         sudo mkdir -p /var/www/wiki
-        # Root-Webdateien (deine HTML/CSS/Bilder im Repo-Root)
-        sudo rsync -a --ignore-missing-errors index.htm index.html style.css *.jpg *.jpeg *.png *.gif *.svg 2>/dev/null /var/www/wiki/ || true
-        # Inhalt des wiki/-Ordners (überschreibt, löscht aber nichts)
+        sudo rsync -a index.htm style.css background_paper.jpg /var/www/wiki/ 2>/dev/null || true
         sudo rsync -a wiki/ /var/www/wiki/ 2>/dev/null || true
         sudo chcon -R -t httpd_sys_content_t /var/www/wiki 2>/dev/null || true
 
-        echo "== 2. Tools nach ~/repo/tools =="
-        rsync -a --delete tools/ ~/repo/tools/
+        echo "== 2. Tools deployen =="
+        DEPLOY=/home/iusearchbtw/repo
+        sudo mkdir -p "$DEPLOY/tools" "$DEPLOY/run" "$DEPLOY/logs"
+        sudo rsync -a --delete tools/ "$DEPLOY/tools/"
 
-        echo "== 3. Geänderte Tools deployen =="
-        # Bei erstem Commit: keine Vorgeschichte -> alle bauen
+        echo "== 3. Geaenderte Tools bauen =="
         if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -q "tools/"; then
           CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null)
         else
@@ -37,7 +34,7 @@ steps:
             tool=$(basename "$dir")
             if echo "$CHANGED" | grep -q "tools/$lang/$tool/"; then
               echo ">> Deploy $tool ($lang)"
-              /usr/local/bin/run-tool "$tool" "$lang" || echo ">> FEHLER bei $tool"
+              sudo /usr/local/bin/run-tool "$tool" "$lang" || echo ">> FEHLER bei $tool"
             fi
           done
         done

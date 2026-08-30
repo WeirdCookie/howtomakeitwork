@@ -36,7 +36,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .route("/health", web::get().to(health))
             .route("/", web::get().to(index))
-            .route("/api/rechner/add", web::get().to(add))
+            .route("/rechner/add", web::get().to(add))
     })
     .bind(("0.0.0.0", port))?
     .run()
