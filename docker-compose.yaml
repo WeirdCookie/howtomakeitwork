@@ -1,0 +1,31 @@
+version: '3.8'
+
+services: #Rust Gateway
+
+  gateway:
+
+    build:
+      context: ./gateway          
+      dockerfile: Dockerfile      #TODO: Implement Dockerfile to fix this
+    ports:
+      - "80:8080"
+    labels:
+      coolify.managed: "true"
+      coolify.git: "true"
+    environment:
+      - RUST_LOG=info
+      - PORT=8080
+    restart: unless-stopped
+
+  #static HTML
+
+  frontend:
+    build:
+      context: ./frontend         
+      dockerfile: Dockerfile      
+    ports:
+      - "3000:80"
+    labels:
+      coolify.managed: "true"
+      coolify.git: "true"
+    restart: unless-stopped
