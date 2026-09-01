@@ -29,3 +29,16 @@ services: #Rust Gateway
       coolify.managed: "true"
       coolify.git: "true"
     restart: unless-stopped
+
+  #go
+  
+  go-tool:
+    build:
+      context: ./go-tool
+      dockerfile: Dockerfile
+    ports:
+      -"8081:8080"
+    labels:
+      coolify.managed: "true"
+      coolify.git: "true"
+    
