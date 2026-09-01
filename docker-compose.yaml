@@ -7,8 +7,7 @@ services: #Rust Gateway
     build:
       context: ./gateway          
       dockerfile: Dockerfile      #TODO: Implement Dockerfile to fix this
-    ports:
-      - "80:8080"
+    # ports: - "80:8080"          # commented out because coolify will redirect automatically over DNS
     labels:
       coolify.managed: "true"
       coolify.git: "true"
@@ -23,8 +22,7 @@ services: #Rust Gateway
     build:
       context: ./frontend         
       dockerfile: Dockerfile      
-    ports:
-      - "3000:80"
+    # ports: - "3000:80"          #
     labels:
       coolify.managed: "true"
       coolify.git: "true"
@@ -36,8 +34,7 @@ services: #Rust Gateway
     build:
       context: ./go-tool
       dockerfile: Dockerfile
-    ports:
-      -"8081:8080"
+    # ports: - "8081:8080"        # Auskommentiert
     labels:
       coolify.managed: "true"
       coolify.git: "true"
@@ -49,8 +46,7 @@ services: #Rust Gateway
     build:
       context: ./python-tool
       dockerfile: Dockerfile
-    ports:
-      -"5000:5000"
+    # ports: - "5000:5000"        # Auskommentiert
     labels:
       coolify.managed: "true"
       coolify.git: "true"
@@ -62,8 +58,7 @@ services: #Rust Gateway
     build:
       context: ./julia-tool
       dockerfile: Dockerfile
-    ports:
-      -"8000:8000"
+    # ports: - "8000:8000"        # Auskommentiert
     labels:
       coolify.managed: "true"
       coolify.git: "true"
