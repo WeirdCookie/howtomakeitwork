@@ -41,4 +41,30 @@ services: #Rust Gateway
     labels:
       coolify.managed: "true"
       coolify.git: "true"
-    
+    restart: unless-stopped
+ 
+  #python
+  
+  python-tool:
+    build:
+      context: ./python-tool
+      dockerfile: Dockerfile
+    ports:
+      -"5000:5000"
+    labels:
+      coolify.managed: "true"
+      coolify.git: "true"
+    restart: unless-stopped
+ 
+  #julia
+  
+  julia-tool:
+    build:
+      context: ./julia-tool
+      dockerfile: Dockerfile
+    ports:
+      -"8000:8000"
+    labels:
+      coolify.managed: "true"
+      coolify.git: "true"
+    restart: unless-stopped
