@@ -1,7 +1,10 @@
 # howtomakeitwork
-A website with many little mini tools and DIY tutorials in many different programming languages.
+This is the repository of a website that shows many of my self coded projects in the browser on my own domain and VPS.
 
-This is only a hobby project.
+This is only a hobby project with maybe a bit of errors ans weird written code.
 
-I think humans learn the best from other humans, so this is why 100% of the code in this repository is human written. 
-I want to host this on Cloudflare with Clientside/Wasm Rendering.
+All things that are AI written are listed in the AI Disclosure in the repository of the projects.
+
+Most of the projects are in english but some of them are maybe only available in german.
+
+### If you want to contribute or fix errors then just make a fork and a PR and i will look if this will come into the codebase
