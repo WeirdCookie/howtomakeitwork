@@ -12,8 +12,59 @@ body {
     background-attachment: fixed;
     background-color: #f5f0e8;
     min-height: 100vh;
+    color: #3a352f;
 }
 
 header {
     text-align:center
 }
+
+/* Navigationsleiste im Papierthema */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 2rem;
+    padding: 1rem 1.75rem;
+    background: rgba(247, 243, 242, 0.82);
+    border-bottom: 1px solid rgba(58, 53, 47, 0.15);
+    backdrop-filter: blur(6px);
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+}
+
+.nav-right, .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links { list-style: none; }
+
+.navbar a {
+    color: #3a352f;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar a:hover { color: #8a5a2b; border-bottom-color: #8a5a2b; }
+
+.github {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.github svg { width: 22px; height: 22px; transition: transform 0.2s ease; }
+.github:hover { border-bottom-color: transparent; }
+.github:hover svg { transform: scale(1.12); }
