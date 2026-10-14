@@ -1,4 +1,4 @@
-# Build-Artefakte
+# Build artifacts
 target/
 build/
 *.o
@@ -12,5 +12,5 @@ __pycache__/
 node_modules/
 .vendor/
 .bundle/
-#privater stuff
+# private stuff
 how-i-made-this-server.md
