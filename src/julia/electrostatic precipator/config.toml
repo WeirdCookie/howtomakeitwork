@@ -1,0 +1,61 @@
+# ============================================================================
+#  Electrostatic precipitator – simulation configuration
+# ----------------------------------------------------------------------------
+#  • All values in SI units, the unit is given in the right-hand column.
+#  • Change values, run the simulation:     julia simulation.jl
+#  • The result is written to the file given in [simulation] → output.
+#  • All sections below are required, their order does not matter.
+# ============================================================================
+
+# 1 ─ Geometry of the filter chamber ───────────────────────────────────────
+
+[geometry]
+r_outer = 0.05      # outer radius of the chamber (aluminum foil)  [m]
+r_inner = 0.001     # radius of the wire electrode (copper)        [m]
+height  = 0.20      # chamber height                               [m]
+
+# 2 ─ Electrical quantities ────────────────────────────────────────────────
+
+[electrical]
+voltage   = 10000.0   # voltage between wire and wall              [V]
+epsilon_0 = 8.85e-12  # permittivity of vacuum                     [F/m]
+epsilon_r = 3.0       # relative permittivity of soot              [-]
+
+# 3 ─ Gas flow ─────────────────────────────────────────────────────────────
+
+[flow]
+gas_velocity = 0.5     # gas velocity                              [m/s]
+viscosity    = 1.8e-5  # dynamic viscosity of air                  [Pa·s]
+
+# 4 ─ Temperature ──────────────────────────────────────────────────────────
+
+[thermal]
+boltzmann_constant = 1.38e-23  # Boltzmann constant               [J/K]
+temperature        = 293.0     # gas temperature                   [K]
+
+# 5 ─ Particles ────────────────────────────────────────────────────────────
+
+[particles]
+density    = 1000.0  # soot density                               [kg/m³]
+radius_min = 0.5e-4  # minimum particle radius                    [m]
+radius_max = 1.5e-4  # maximum particle radius                    [m]
+
+# 6 ─ Gravitation ──────────────────────────────────────────────────────────
+
+[gravitation]
+gravity = 9.81  # gravitational acceleration                       [m/s²]
+
+# 7 ─ Pulsing (NE555, artificially reduced to 5 Hz) ────────────────────────
+
+[pulsing]
+frequency  = 5.0  # pulse frequency                              [Hz]
+duty_cycle = 0.5  # fraction of the period with active field     [0..1]
+
+# 8 ─ Simulation & output ──────────────────────────────────────────────────
+
+[simulation]
+dt          = 0.001   # time step                                [s]
+n_steps     = 10000   # number of time steps                     [-]
+n_particles = 1000    # number of simulated particles            [-]
+seed        = 0       # base random seed (0 = particle index)    [-]
+output      = "simulation.toml"  # result file                  [-]
